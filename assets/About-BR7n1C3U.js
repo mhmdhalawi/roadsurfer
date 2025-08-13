@@ -1,1 +1,0 @@
-import{_ as o,c as n,a as t,F as a,o as r}from"./index-DRzepVZn.js";const s={};function l(u,e){return r(),n(a,null,[e[0]||(e[0]=t("h1",null,"About Page",-1)),e[1]||(e[1]=t("p",null,"Welcome to the about page!",-1))],64)}const f=o(s,[["render",l]]);export{f as default};
