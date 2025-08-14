@@ -1,1 +1,0 @@
-import{_ as t,c as n,a as o,F as r,o as a}from"./index-C6CQLx-_.js";const s={};function l(m,e){return a(),n(r,null,[e[0]||(e[0]=o("h1",null,"Home Page",-1)),e[1]||(e[1]=o("p",null,"Welcome to the home page!",-1))],64)}const f=t(s,[["render",l]]);export{f as default};
