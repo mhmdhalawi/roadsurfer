@@ -1,6 +1,5 @@
 <script setup lang="ts"></script>
 
 <template>
-  <h1>Home Page</h1>
-  <p>Welcome to the home page!</p>
+  <h1>Booking Page</h1>
 </template>

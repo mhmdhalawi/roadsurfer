@@ -1,10 +1,11 @@
 <script setup lang="ts"></script>
 
 <template>
-  <h1>Hello App!</h1>
   <nav class="flex gap-x-2 text-blue-500">
-    <RouterLink :to="{ name: 'home' }">Go to Home</RouterLink>
-    <RouterLink :to="{ name: 'about' }">Go to About</RouterLink>
+    <RouterLink :to="{ name: 'booking' }">Go to Booking</RouterLink>
+    <RouterLink :to="{ name: 'booking-details', params: { id: 1 } }"
+      >Go to Booking Details</RouterLink
+    >
   </nav>
   <main>
     <RouterView />
