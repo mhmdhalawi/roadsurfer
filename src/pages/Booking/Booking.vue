@@ -13,7 +13,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="flex justify-between">
+  <div class="flex lg:justify-between flex-col lg:flex-row items-center lg:items-baseline">
     <h1 class="text-2xl font-bold mb-4">Road Surfer</h1>
     <BookingAutoComplete />
   </div>

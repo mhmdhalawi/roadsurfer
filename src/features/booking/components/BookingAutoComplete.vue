@@ -21,15 +21,19 @@ const search = ref<string>("");
 const debouncedSearch = refDebounced(search, 400);
 
 const stations = ref<Station[]>([]);
+const isLoading = ref(false);
 
 const isTyping = computed(() => search.value !== debouncedSearch.value);
 
 watch(debouncedSearch, async (newSearchValue) => {
+  isLoading.value = true;
   try {
     stations.value = await fetchStations(newSearchValue);
   } catch (error) {
     console.error("Error fetching stations:", error);
     stations.value = [];
+  } finally {
+    isLoading.value = false;
   }
 });
 </script>
@@ -52,10 +56,10 @@ watch(debouncedSearch, async (newSearchValue) => {
 
     <ComboboxList class="w-[300px]">
       <ComboboxEmpty>
-        {{ isTyping ? "Loading..." : "No station found." }}
+        {{ isTyping || isLoading ? "Loading..." : "No station found." }}
       </ComboboxEmpty>
 
-      <ComboboxGroup v-if="!isTyping">
+      <ComboboxGroup>
         <ComboboxItem v-for="station in stations" :key="station.id" :value="station">
           {{ station.name }}
 
