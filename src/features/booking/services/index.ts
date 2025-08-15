@@ -1,5 +1,5 @@
 import api from "@/lib/axios";
-import type { Station } from "../types";
+import type { Booking, BookingDetailsRequest, Station } from "../types";
 
 async function fetchStations(search?: string): Promise<Station[]> {
   try {
@@ -14,14 +14,23 @@ async function fetchStations(search?: string): Promise<Station[]> {
   }
 }
 
-async function fetchStationById(id: string): Promise<Station> {
+async function fetchStationById(stationId: string): Promise<Station> {
   try {
-    const response = await api.get(`/stations/${id}`);
-    console.log("Station fetched successfully:", response.data);
+    const response = await api.get(`/stations/${stationId}`);
     return response.data;
   } catch (error) {
     throw new Error("Failed to fetch station");
   }
 }
 
-export { fetchStations, fetchStationById };
+async function fetchBookingById(request: BookingDetailsRequest): Promise<Booking> {
+  try {
+    const response = await api.get(`/stations/${request.stationId}/bookings/${request.bookingId}`);
+    console.log("Booking fetched successfully:", response.data);
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch booking");
+  }
+}
+
+export { fetchStations, fetchStationById, fetchBookingById };

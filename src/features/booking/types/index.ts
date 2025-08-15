@@ -7,7 +7,12 @@ export type Station = {
 export type Booking = {
   id: string;
   customerName: string;
+  startDate: string;
   endDate: string;
   pickupReturnStationId: string;
-  startDate: string;
+};
+
+export type BookingDetailsRequest = {
+  stationId: string;
+  bookingId: string;
 };
