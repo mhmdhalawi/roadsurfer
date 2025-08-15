@@ -1,1 +1,0 @@
-import{_ as o,c as t,t as a,o as n}from"./index-Do9XyYUJ.js";const r={};function s(e,c){return n(),t("h1",null,"Booking Details "+a(e.$route.params.id),1)}const l=o(r,[["render",s]]);export{l as default};

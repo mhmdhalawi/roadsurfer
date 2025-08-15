@@ -1,0 +1,1 @@
+import{a3 as o,O as a,$ as t,I as n}from"./index-b7QwIj21.js";const r={};function s(e,c){return n(),a("h1",null,"Booking Details "+t(e.$route.params.id),1)}const l=o(r,[["render",s]]);export{l as default};
