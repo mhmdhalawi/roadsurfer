@@ -2,7 +2,7 @@
 import { cn } from "@/lib/utils";
 import { ref, watch, computed } from "vue";
 import { refDebounced } from "@vueuse/core";
-import { Check, Search } from "lucide-vue-next";
+import { Check, Search, X } from "lucide-vue-next";
 import type { Station } from "@/features/booking/types";
 import { fetchStations } from "@/features/booking/services";
 
@@ -16,6 +16,9 @@ import {
   ComboboxItemIndicator,
   ComboboxList,
 } from "@/components/ui/combobox";
+import { useStationStore } from "@/stores/station";
+
+const store = useStationStore();
 
 const search = ref<string>("");
 const debouncedSearch = refDebounced(search, 400);
@@ -36,18 +39,30 @@ watch(debouncedSearch, async (newSearchValue) => {
     isLoading.value = false;
   }
 });
+
+function clearSearch() {
+  search.value = "";
+  store.station = null;
+}
 </script>
 
 <template>
-  <Combobox by="name">
-    <ComboboxAnchor class="w-[300px]">
-      <div class="relative max-w-sm items-center rounded-md border border-gray-300 bg-white m">
+  <Combobox by="name" v-model="store.station">
+    <ComboboxAnchor class="w-full lg:w-[300px]">
+      <div class="relative max-w-sm items-center rounded-md border border-gray-300 bg-white">
         <ComboboxInput
           v-model="search"
-          class="ps-4"
-          :display-value="(val) => val?.name ?? ''"
+          class="ps-4 pr-8"
+          :display-value="() => store.station?.name ?? ''"
           placeholder="Search for a station..."
         />
+        <span
+          v-if="search || store.station"
+          class="absolute end-0 inset-y-0 flex items-center px-3 cursor-pointer"
+          @click="clearSearch"
+        >
+          <X class="size-3 text-gray-400 hover:text-gray-600" />
+        </span>
         <span class="absolute start-0 inset-y-0 flex items-center justify-center px-3">
           <Search class="size-4 text-gray-400" />
         </span>
