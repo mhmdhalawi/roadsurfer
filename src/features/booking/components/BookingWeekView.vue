@@ -26,8 +26,6 @@ function goToCurrentWeek() {
 function goToNextWeek() {
   currentWeek.value = currentWeek.value.add(1, "week");
 }
-
-console.log(weekDays.value);
 </script>
 
 <template>
